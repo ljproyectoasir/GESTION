@@ -1,0 +1,18 @@
+options {
+	// Directorio donde se almacenan las zonas //
+	directory "/var/cache/bind";
+
+	// IPs en las que escuha peticiones //
+	listen-on { 127.0.0.1; 10.0.60.10; };
+
+	// Reenviadores a los que preguntar en caso de no saber resolver el nombre DNS
+	forwarders {
+		8.8.8.8;
+		8.8.4.4;
+	};
+
+	dnssec-validation auto;
+
+	auth-nxdomain no;    # conform to RFC1035
+};
+

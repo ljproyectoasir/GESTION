@@ -1,0 +1,236 @@
+<html>
+	<head> 
+		<title>Formulario General</title>
+	</head>
+<body bgcolor=black>
+	<script LANGUAGE="javascript">
+		function comprobar() 
+			{
+			switch(document.f1.opcion.value) 
+				{
+				case "ins":
+					if (document.f1.id_alumno.value=="" || document.f1.nombre.value=="" || 
+						document.f1.apellidos.value=="" || document.f1.edad.value=="" || 
+						document.f1.correo.value=="" || document.f1.id_carrera.value=="" || 
+						document.f1.fecha.value=="")
+							{
+							alert('Todos los cambos deben estar rellenados');
+							return false;
+							}
+							else
+							return true;
+					break;
+				case "vis":
+					if (document.f1.id_alumno.value=="" && document.f1.nombre.value=="" && 
+						document.f1.apellidos.value=="" && document.f1.edad.value=="" && 
+						document.f1.correo.value=="" && document.f1.id_carrera.value=="" && 
+						document.f1.fecha.value=="")
+							return true;
+							else
+								{
+								alert('Todos los cambos deben estar vacios para visualizar');
+								return false;
+								}
+					break;
+				case "con":
+					if (document.f1.id_alumno.value=="")
+						{
+						alert('El Campo ID_Alumno no puede estar vacio');
+						return false;
+						}
+						else
+						if (document.f1.nombre.value=="" && document.f1.apellidos.value=="" && 
+							document.f1.edad.value=="" && document.f1.correo.value=="" && 
+							document.f1.id_carrera.value=="" && document.f1.fecha.value=="")
+							return true;
+							else
+								{
+								alert('Todos los cambos deben estar vacios salvo ID_Alumno para consultar');
+								return false;
+								}
+					break;
+				case "act":
+					if (document.f1.id_alumno.value=="" || document.f1.nombre.value=="" || 
+						document.f1.apellidos.value=="" || document.f1.edad.value=="" || 
+						document.f1.correo.value=="" || document.f1.id_carrera.value=="" || 
+						document.f1.fecha.value=="")
+							{
+							alert('Todos los cambos deben estar rellenados');
+							return false;
+							}
+							else
+							return true;
+					break;
+				case "eli":
+					if (document.f1.id_alumno.value=="")
+						{
+						alert('El Campo ID_Alumno no puede estar vacio');
+						return false;
+						}
+						else
+						if (document.f1.nombre.value=="" && document.f1.apellidos.value=="" && 
+							document.f1.edad.value=="" && document.f1.correo.value=="" && 
+							document.f1.id_carrera.value=="" && document.f1.fecha.value=="")
+							return true;
+							else
+								{
+								alert('Todos los cambos deben estar vacios salvo ID_Alumno para eliminar');
+								return false;
+								}
+					break;
+				case "fin":
+					if (document.f1.id_alumno.value=="" && document.f1.nombre.value=="" && 
+						document.f1.apellidos.value=="" && document.f1.edad.value=="" && 
+						document.f1.correo.value=="" && document.f1.id_carrera.value=="" && 
+						document.f1.fecha.value=="")
+							return true;
+							else
+								{
+								alert('Por favor, borre todos los campos antes de finalizar la conexion');
+								return false;
+								}
+					break;
+				case "confecha":
+					if (document.f1.id_alumno.value=="" && document.f1.nombre.value=="" &&
+						document.f1.apellidos.value=="" && document.f1.edad.value=="" &&
+						document.f1.correo.value=="" && document.f1.id_carrera.value=="")
+							return true;
+							else
+								{
+								alert('Todos los cambos deben estar vacios, salvo la fecha que es opcional al consultar fecha');
+								return false;
+								}
+					break;
+				
+			} 
+		}
+		function borrar()
+			{
+			sw=confirm("Desea borrar los datos");
+			return sw;
+			}
+	</script>
+	<center>
+	<font color="yellow" size=3><H1>INSERTAR MODIFICAR ELIMINAR CONSULTAR DATOS EN MYSQL</H1></font>
+
+	
+		<FORM name="f1" ACTION="FINAL.php" METHOD="POST" ONSUBMIT="return comprobar()" ONRESET="return borrar()"> 
+			<table border=5 bgcolor=yellow width=600>
+				<tr align=center>
+					<td colspan=2>
+						<b>ACCI&OacuteN:</b>
+						<select name="opcion" size=1>
+							<option value="ins">Insertar</option>
+							<option value="vis">Visualizar</option>
+							<option value="con">Consultar</option>
+							<option value="act">Actualizar</option>
+							<option value="eli">Eliminar</option>
+							<option value="confecha">Consultar Fecha</option>
+							<option value="fin">Terminar</option>
+						</select>
+					</td>
+				</tr><tr>
+					<td colspan=2>
+						<b><p>NOTA:<br>
+						* Rellenar SOLO el campo ID_Alumno si la accion es ELIMINAR o CONSULTAR.<br>
+						* No rellenar ning&uacuten campo si la accion es visualizar. <br>
+						* CONSULTAR FECHA muestra todos los registros que tienen una fecha
+						posterior a la introducida por el formulario. <br>
+						Si el campo Fecha esta en blanco coge el valor por defecto (1970-01-01). <br>
+						* Si la accion es actualizar se deber&aacuten rellenar todos los campos. <br>
+						* No se podra dejar ning&uacuten campo en blanco si la acci&oacuten es INSERTAR. <br>
+						* La edad se corrige automaticamente segun la fecha introducida. <br>
+						* El formato de fecha debera ser A&NtildeO(4 digitos)-MES(2 digitos)-DIA(2 digitos), separados por guiones "-" (1990-01-01) 
+						</p></b>
+					</td>
+				</tr><tr>
+					<td ><b>ID_Alumno</b></td>
+					<td><INPUT TYPE="text" NAME="id_alumno" size=6></td> 
+				</tr><tr>	
+					<td><b>Nombre</b></td>
+					<td><INPUT TYPE="text" NAME="nombre" size=30></td>  
+				</tr><tr>	
+					<td><b>Apellidos</b></td>
+					<td><INPUT TYPE="text" NAME="apellidos" size=60></td> 
+				</tr><tr>	
+					<td><b>Edad</b></td>
+					<td><INPUT TYPE="text" NAME="edad" size=3></td> 
+				</tr><tr>	
+					<td><b>Correo</b></td>
+					<td><INPUT TYPE="text" NAME="correo" size=60></td> 
+				</tr><tr>	
+					<td><b>ID_Carrera</b></td>
+					<td><INPUT TYPE="text" NAME="id_carrera" size=8></td> 	
+				</tr><tr>	
+					<td><b>Fecha</b></td>
+					<td><INPUT TYPE="text" NAME="fecha" size=10></td> 
+				</tr><tr>	
+					<td colspan=2 align=center>
+						<INPUT TYPE="submit" VALUE="Enviar">
+						<INPUT TYPE="reset" VALUE="Borrar">
+					</td>
+				</tr>
+			</table>
+		</FORM> 
+		<br>
+		<table border=5 bgcolor=yellow width=460>
+			<tr>
+				<td width=100>
+					Insertar:
+				</td>
+				<td>
+					Todos los campos rellenados
+				</td>
+			</tr>
+			<tr>
+				<td >
+					Visualizar
+				</td>
+				<td>
+					Todos los campos vacios
+				</td>
+			</tr>
+			<tr>
+				<td >
+					Consultar:
+				</td>
+				<td>
+					Solo el campo ID_Alumno rellenado
+				</td>
+			</tr>
+			<tr>
+				<td >
+					Actualizar:
+				</td>
+				<td>
+					Todos los campos rellenados
+				</td>
+			</tr>
+			<tr>
+				<td >
+					Eliminar:
+				</td>
+				<td>
+					Solo el campo ID_Alumno rellenado
+				</td>
+			</tr>
+			<tr>
+				<td >
+					Consultar fecha:
+				</td>
+				<td>
+					Todos los campos vacios, salvo fecha, que es opcional
+				</td>
+			</tr>
+			<tr>
+				<td >
+					Terminar:
+				</td>
+				<td>
+					Todos los campos vacios
+				</td>
+			</tr>
+		</table>
+	</center>
+</body> 
+</html>

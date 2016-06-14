@@ -1,0 +1,26 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+10.in-addr.arpa		IN SOA	nedstark.got. nedstark.got. (
+			97         ; serial
+			604800     ; refresh (1 week)
+			86400      ; retry (1 day)
+			2419200    ; expire (4 weeks)
+			604800     ; minimum (1 week)
+			)
+		NS	ns1.got.
+		NS	ns2.got.	
+                NS      ns3.got.
+$ORIGIN 10.in-addr.arpa.
+10.60.0		PTR	nedstark
+10.30.0		PTR	alton
+20.30.0		PTR	tyrion
+
+254.255.255	PTR	proxmox1
+10.10.0		PTR	arya
+20.10.0		PTR	johnsnow
+10.20.0		PTR	tywin
+20.20.0		PTR	jaime
+10.40.0		PTR	tyene
+20.40.0		PTR	obara
+30.40.0		PTR	nymeria
+161.105.211.130	PTR	daenerys

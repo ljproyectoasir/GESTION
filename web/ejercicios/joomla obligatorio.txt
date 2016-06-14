@@ -1,0 +1,5 @@
+menu nuevo
+	3 items distintos(acticulos,categorias,enlaces)
+encuesta
+banner
+foro

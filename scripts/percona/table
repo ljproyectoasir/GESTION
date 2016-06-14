@@ -1,0 +1,3 @@
+use proyecto
+drop table alumnos;
+create table alumnos (id_alumno INT NOT NULL PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(20), apellido VARCHAR(50));

@@ -1,0 +1,14 @@
+TARGETS = uuidd xinetd vsftpd atd irqbalance bluetooth exim4 nginx bind9 urandom sendsigs rsyslog umountnfs.sh rpcbind nfs-common networking hwclock.sh umountfs umountroot live-tools halt reboot
+bind9: exim4 nginx
+sendsigs: xinetd vsftpd bind9 atd uuidd bluetooth irqbalance exim4 nginx
+rsyslog: sendsigs xinetd vsftpd bind9 atd bluetooth irqbalance exim4 nginx
+umountnfs.sh: rsyslog sendsigs xinetd vsftpd bind9 atd uuidd bluetooth irqbalance exim4 nginx
+rpcbind: umountnfs.sh
+nfs-common: umountnfs.sh
+networking: umountnfs.sh xinetd vsftpd bind9 exim4 nginx rpcbind
+hwclock.sh: rsyslog atd uuidd nfs-common
+umountfs: umountnfs.sh urandom xinetd vsftpd bind9 networking atd uuidd bluetooth irqbalance exim4 nginx rpcbind hwclock.sh
+umountroot: umountfs
+live-tools: umountroot
+halt: umountroot live-tools
+reboot: umountroot live-tools

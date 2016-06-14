@@ -1,0 +1,51 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+got.			IN SOA	nedstark.got. nedstark.got. (
+			96         ; serial
+			604800     ; refresh (1 week)
+			86400      ; retry (1 day)
+			2419200    ; expire (4 weeks)
+			604800     ; minimum (1 week)
+			)
+		NS	ns1.got.
+		NS	ns2.got.
+		NS	ns3.got.
+$ORIGIN got.
+ns1		A	10.0.60.10 
+ns2		A	10.0.30.10
+ns3		A	10.0.30.20
+proxmox1	A	10.255.255.254
+proxmox2	A	192.168.1.201
+lb01		A       10.0.10.10
+lb02		A       10.0.10.20
+web01		A       10.0.20.10
+web02		A       10.0.20.20
+bbdd01		A       10.0.40.10
+bbdd02		A       10.0.40.20
+bbdd03		A       10.0.40.30
+nagios01	A       130.211.105.161
+nagios02	A       52.48.78.193
+backup01	A       192.168.1.202
+backup02	A       104.196.127.49
+
+
+nedstark 	CNAME	ns1
+lb03		CNAME	ns2
+lb04		CNAME	ns3
+elmuro		CNAME	proxmox1
+7reinos		CNAME	proxmox2
+arya		CNAME	lb01
+johnsnow	CNAME	lb02
+tywin		CNAME	web01
+jaime		CNAME	web02
+alton		CNAME	ns2
+tyrion		CNAME	ns3
+tyene		CNAME	bbdd01
+obara		CNAME	bbdd02
+nymeria		CNAME	bbdd03
+daenerys	CNAME	nagios01
+khaleesi	CNAME	nagios02
+varys		CNAME	backup01
+baelish		CNAME	backup02
+
+

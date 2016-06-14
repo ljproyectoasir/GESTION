@@ -1,0 +1,39 @@
+
+<html><head>
+<title>Formularios.php</title>
+<script>
+	function comprobar()
+	{
+	b=false;
+	for (i=0;i<document.f1.num.length;i++)
+		{
+        if (document.f1.num[i].checked)
+		b=true;
+		}
+	if (b==false)
+		alert ("No has seleccionado ninguna de las opciones");
+	return b;
+	}
+</script>
+</head>
+<body>
+<center>
+<h1>Seleccione el contenido de la tabla</h1>
+<form name="f1" action="13.php" onsubmit="return comprobar()" method=”GET”> 
+<table border="3" width=500 height=150>
+<tr>
+<td colspan=4 align=center>Opciones:</td>
+</tr><tr align=center>
+<td><input type="radio" name="num" size="5" value=1>Mayusculas</td>
+<td><input type="radio" name="num" size="5" value=2>Minusculas</td>
+<td><input type="radio" name="num" size="5" value=3>Numeros</td>
+<td><input type="radio" name="num" size="5" value=4>Todo</td>
+</tr>
+<tr align=center>
+<td colspan=2><input type="submit" value="Enviar" ></td>
+<td colspan=2><input type="reset" value="Borrar" ></td>
+</tr>
+</table>
+</center>
+</form>
+</body></html>
